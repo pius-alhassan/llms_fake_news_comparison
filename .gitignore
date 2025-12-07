@@ -1,0 +1,168 @@
+# =====================================
+# Virtual Environments
+# =====================================
+.venv/
+llm_venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.pyc
+
+# Python virtual environments (any name ending with _venv or venv)
+*venv/
+*_venv/
+
+# =====================================
+# Data Directory (keep only metadata/)
+# =====================================
+data/**/*
+!data/metadata/
+!data/metadata/**/*
+
+# =====================================
+# Temporary/Runtime Files
+# =====================================
+# Server temp files
+server/temp/
+server/temp/**/*
+
+# Session directories
+*.session/
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Frame extraction output
+*.jpg
+*.png
+*.jpeg
+*.bmp
+*.tiff
+
+# =====================================
+# Python-specific
+# =====================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# =====================================
+# IDE/Editor Files
+# =====================================
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# =====================================
+# OS/System Files
+# =====================================
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =====================================
+# Project-specific Debug/Temp Files
+# =====================================
+# Your debugging/tracking files
+debug.py
+guide.txt
+random_sampler.json
+test_output/
+test_results/
+*.log
+*.debug
+
+# Experimental/development files
+experiment_*.py
+test_*.py  # Be careful - this might ignore your actual test files!
+# Better to be specific:
+temp_test_*.py
+scratch_*.py
+experiment*.ipynb
+
+# =====================================
+# Model/Large Files
+# =====================================
+models/
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.bin
+
+# =====================================
+# Other
+# =====================================
+# Configuration files (except template)
+config.yaml
+config.json
+credentials.json
+*.key
+*.pem
+*.crt
