@@ -56,71 +56,74 @@ This project supports the ICA requirement of developing an implementation *and* 
 ---
 
 ## 🏗️ Project Directory Structure  
-
+```
 llms_fake_news_comparison/
 │
 ├── README.md
-├── .env # API keys (excluded from git)
-├── llm_venv/ # Virtual environment
+├── .env
+├── llm_venv/
 │
 ├── data/
-│ ├── raw/
-│ │ ├── text/
-│ │ │ └── liar_dataset/
-│ │ │ ├── train.tsv
-│ │ │ ├── test.tsv
-│ │ │ ├── valid.tsv
-│ │ │ └── README
-│ │ └── video/
-│ │ ├── faceforensics/
-│ │ │ └── *.mp4
-│ │ ├── fake_video_metadata.xlsx
-│ │ └── original_video_metadata.xlsx
-│ │
-│ ├── metadata/
-│ │ └── llm_evaluation_metadata.xlsx
-│ │
-│ ├── samples/
-│ ├── cleaned_response.txt
-│ └── extracted_text.json
+│   ├── raw/
+│   │   ├── text/
+│   │   │   └── liar_dataset/
+│   │   │       ├── train.tsv
+│   │   │       ├── test.tsv
+│   │   │       ├── valid.tsv
+│   │   │       └── README
+│   │   │
+│   │   └── video/
+│   │       ├── faceforensics/
+│   │       │   └── *.mp4
+│   │       ├── fake_video_metadata.xlsx
+│   │       └── original_video_metadata.xlsx
+│   │
+│   ├── metadata/
+│   │   └── llm_evaluation_metadata.xlsx
+│   │
+│   ├── samples/
+│   │   ├── cleaned_response.txt
+│   │   └── extracted_text.json
+│   │
+│   └── outputs/
 │
 ├── server/
-│ ├── app.py # Flask backend server
-│ │
-│ ├── llms/
-│ │ ├── base.py
-│ │ ├── gemini_wrapper.py # Vision + text LLM
-│ │ ├── mistral_wrapper.py
-│ │ └── openai_wrapper.py
-│ │
-│ ├── preprocessing/
-│ │ ├── preprocess_video.py
-│ │ └── preprocess_text.py
-│ │
-│ ├── utils/
-│ │ ├── random_sampler.py
-│ │ ├── deepfake_loader.py
-│ │ ├── liar_loader.py
-│ │ ├── filepaths.py
-│ │ ├── dataset.py
-│ │ └── helpers.py
-│ │
-│ └── temp/
-│ └── frames/ # dynamically created + cleaned
+│   ├── app.py
+│   │
+│   ├── llms/
+│   │   ├── base.py
+│   │   ├── gemini_wrapper.py
+│   │   ├── mistral_wrapper.py
+│   │   └── openai_wrapper.py
+│   │
+│   ├── preprocessing/
+│   │   ├── preprocess_video.py
+│   │   └── preprocess_text.py
+│   │
+│   ├── utils/
+│   │   ├── random_sampler.py
+│   │   ├── deepfake_loader.py
+│   │   ├── liar_loader.py
+│   │   ├── filepaths.py
+│   │   ├── dataset.py
+│   │   └── helpers.py
+│   │
+│   └── temp/
+│       └── frames/
 │
 ├── client/
-│ ├── terminal_client.py # CLI for interaction
-│ └── client_gui.py # future GUI
+│   ├── terminal_client.py
+│   └── client_gui.py
 │
 ├── scripts/
-│ ├── evaluate_models.py
-│ ├── sample_faceforensics.py
-│ └── extract_frames.sh
+│   ├── evaluate_models.py
+│   ├── sample_faceforensics.py
+│   └── extract_frames.sh
 │
 └── tests/
-├── gemini_test.py # LLM + frame extraction test
-└── init.py
-
+    ├── gemini_test.py
+    └── __init__.py
+```
 
 ---
 
