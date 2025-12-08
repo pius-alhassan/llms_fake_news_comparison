@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from google import generativeai as genai
-from server.llms.base import BaseLLM
+from base import BaseLLM
 
 load_dotenv()  # loading GEMINI_API_KEY
 
