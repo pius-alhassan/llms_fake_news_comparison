@@ -62,15 +62,48 @@ def test_frame_extraction(video_path=None):
         print("  Usage: python test_script.py frames <video_path>")
         return False
     
+    # Convert to Path object
+    video_path = Path(video_path)
+    
+    # If path doesn't exist, try to find it in common locations
+    if not video_path.exists():
+        print(f"⚠️  File not found at provided path: {video_path}")
+        print("   Searching in common locations...")
+        
+        # Define common search locations relative to project root
+        common_locations = [
+            root / "data" / "raw" / "video" / "faceforensics" / video_path.name,
+            root / "data" / "videos" / video_path.name,
+            root / "videos" / video_path.name,
+            root / "test_videos" / video_path.name,
+        ]
+        
+        # Try each location
+        for location in common_locations:
+            if location.exists():
+                print(f"   Found at: {location}")
+                video_path = location
+                break
+        else:
+            print(f"✗ Video file not found in any common location")
+            print(f"   Tried:")
+            for location in common_locations:
+                print(f"   - {location}")
+            return False
+    
     try:
-        frames = extract_frames(video_path, frame_count=10)
-        print(f"✓ Extracted {len(frames)} frames from {video_path}")
+        print(f"📹 Processing: {video_path}")
+        frames = extract_frames(str(video_path), frame_count=10)
+        print(f"✓ Extracted {len(frames)} frames from {video_path.name}")
+        print(frames)
         return True
     except FileNotFoundError:
         print(f"✗ Video file not found: {video_path}")
         return False
     except Exception as e:
         print(f"✗ Frame extraction test failed: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 #=====================================
