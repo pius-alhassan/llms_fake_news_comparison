@@ -10,7 +10,14 @@ env.bak/
 venv.bak/
 *.pyc
 
+# ====================================
+# Environment Variables Files
+# =====================================
+.env
+
+# =====================================
 # Python virtual environments (any name ending with _venv or venv)
+# =====================================
 *venv/
 *_venv/
 
