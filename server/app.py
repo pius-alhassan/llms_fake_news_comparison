@@ -3,16 +3,16 @@ from utils.random_sampler import *
 from utils.helpers import get_video_entry
 from preprocessing.preprocess_video import extract_frames, cleanup_session
 from llms.gemini_wrapper import GeminiLLM
-# from llms.mistral_wrapper import MistralLLM
-# from llms.openai_wrapper import OpenAIWrapper
+from llms.mistral_wrapper import MistralLLM
+from llms.openai_wrapper import OpenAIWrapper
 
 
 app = Flask(__name__)
 
 MODEL_REGISTRY = {
     "gemini": GeminiLLM(),
-    # "mistral": MistralLLM(),
-    # "gpt4o": OpenAIWrapper()
+    "mistral": MistralLLM(),
+    "gpt4o": OpenAIWrapper()
 }
 
 
