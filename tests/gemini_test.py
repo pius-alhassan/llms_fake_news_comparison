@@ -7,11 +7,6 @@ sys.path.append(str(ROOT))
 
 from server.llms.gemini_wrapper import GeminiLLM
 
-# model = GeminiLLM()
-
-# result = model.predict_video(["server/temp/frames/16ba34fa-cdf2-41e4-82b5-568f9f613437/frame_6.jpg"])
-# print(result)
-
 # module path
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.append(str(ROOT))
