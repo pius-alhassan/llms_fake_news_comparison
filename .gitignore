@@ -138,6 +138,7 @@ Thumbs.db
 debug.py
 guide.txt
 random_sampler.json
+random_response.json
 test_output/
 test_results/
 *.log
