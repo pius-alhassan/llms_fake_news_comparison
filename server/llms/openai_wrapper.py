@@ -1,8 +1,9 @@
 import os
 import base64
 import json
+import re
 from dotenv import load_dotenv
-from server.llms.base import BaseLLM
+from .base import BaseLLM
 from openai import OpenAI
 
 load_dotenv()
@@ -63,3 +64,49 @@ class OpenAIWrapper(BaseLLM):
 
         except Exception as e:
             return {"error": str(e)}
+        
+    def predict_text(self, text: str) -> dict:
+        """
+        Predict fake/real for a text statement using GPT-4o mini
+        """
+        prompt = (
+            "You are a forensic news analyst.\n"
+            "Analyze the following statement and determine if it is 'fake' or 'real'.\n\n"
+            "Return JSON only with keys:\n"
+            "{\n"
+                '  "prediction": "fake|real",\n'
+                '  "confidence": number (0-100),\n'
+                '  "explanation": string\n'
+            "}\n\n"
+            f"Statement:\n{text}"
+        )
+
+        try:
+            response = self.client.responses.create(
+                model=self.model,
+                input=prompt,
+                max_output_tokens=300
+            )
+
+            raw_text = response.output_text.strip()
+
+            # --- Normalize output ---
+            cleaned = re.sub(r"^```json", "", raw_text)
+            cleaned = re.sub(r"```$", "", cleaned)
+            cleaned = cleaned.strip()
+
+            parsed = json.loads(cleaned)
+
+            # --- Enforce schema ---
+            return {
+                "prediction": parsed.get("prediction", "UNKNOWN").upper(),
+                "confidence": float(parsed.get("confidence", 50)),
+                "explanation": parsed.get("explanation", "")
+            }
+
+        except Exception as e:
+            return {
+                "prediction": "UNKNOWN",
+                "confidence": 0.0,
+                "explanation": f"OpenAI prediction failed: {str(e)}"
+            }

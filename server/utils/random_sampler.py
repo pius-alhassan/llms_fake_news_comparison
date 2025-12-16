@@ -1,7 +1,6 @@
 import pandas as pd
 from pathlib import Path
-from helpers import load_metadata
-import random
+from .helpers import load_metadata
 
 def get_random_videos(batch_size=10):
     """
